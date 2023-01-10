@@ -29,12 +29,12 @@ const Home = () => {
           <input type="submit" placeholder="Rechercher" />
         </form>
       </div>
-      <div>
+      <div className="result">
         {filmData &&
           filmData
             // Le slice permet ici de limiter à 24 recette max
             .slice(0, 24)
-            .map((film) => <Card key={film.id} film={film} className="card" />)}
+            .map((film) => <Card key={film.id} film={film} />)}
       </div>
       {/* <Card /> */}
     </div>
