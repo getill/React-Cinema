@@ -1,17 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Header = () => {
-  let isclicked = true;
+  const [show, setShow] = useState(true);
+
   return (
     <header className="header">
       <nav>
         <ul>
-          <a className={isclicked ? "nav-active" : ""} href={"/"}>
+          <a
+            className={show ? "nav-active" : ""}
+            onClick={() => setShow(true)}
+            href={"/"}
+          >
             Accueil
           </a>
           <a
-            onClick={(isclicked = false)}
-            className={isclicked ? "" : "nav-active"}
+            className={show ? "" : "nav-active"}
+            onClick={() => setShow(false)}
             href={"/CDC"}
           >
             Coups de coeur
