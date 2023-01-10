@@ -1,12 +1,21 @@
 import React from "react";
 
 const Header = () => {
+  let isclicked = true;
   return (
     <header className="header">
       <nav>
         <ul>
-          <a href={"/Home"}>Accueil</a>
-          <a href={"/CoupDeC"}>Coups de coeur</a>
+          <a className={isclicked ? "nav-active" : ""} href={"/"}>
+            Accueil
+          </a>
+          <a
+            onClick={(isclicked = false)}
+            className={isclicked ? "" : "nav-active"}
+            href={"/CDC"}
+          >
+            Coups de coeur
+          </a>
         </ul>
       </nav>
       <h1>React Movies</h1>

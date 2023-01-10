@@ -1,7 +1,13 @@
 import React from "react";
+import Header from "../components/Header";
 
 const CoupDeC = () => {
-  return <div></div>;
+  return (
+    <div>
+      CDC
+      <Header />
+    </div>
+  );
 };
 
 export default CoupDeC;
