@@ -1,26 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
-  const [show, setShow] = useState(true);
-
   return (
     <header className="header">
       <nav>
         <ul>
-          <a
-            className={show ? "nav-active" : ""}
-            onClick={() => setShow(true)}
-            href={"/"}
+          <NavLink
+            className={(nav) => (nav.isActive ? "nav-active" : "")}
+            to={"/"}
           >
             Accueil
-          </a>
-          <a
-            className={show ? "" : "nav-active"}
-            onClick={() => setShow(false)}
-            href={"/CDC"}
+          </NavLink>
+
+          <NavLink
+            className={(nav) => (nav.isActive ? "nav-active" : "")}
+            to={"/CDC"}
           >
             Coups de coeur
-          </a>
+          </NavLink>
         </ul>
       </nav>
       <h1>React Movies</h1>
