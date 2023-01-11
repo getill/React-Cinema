@@ -73,6 +73,18 @@ const Films = ({ film }) => {
     }
     return genreArray.map((genre) => <li key={genre}>{genre}</li>);
   };
+
+  const addStorage = () => {
+    let storedData = window.localStorage.film
+      ? window.localStorage.film.split(",")
+      : [];
+    // Si storedData n'inclut pas l'id en question alors ajoute le
+    if (!storedData.includes(film.id.toString())) {
+      storedData.push(film.id);
+      window.localStorage.film = storedData;
+    }
+  };
+
   return (
     <div className="card">
       <img
@@ -93,7 +105,9 @@ const Films = ({ film }) => {
       <ul>{film.genre_ids ? genreFinder() : null}</ul>
       {film.overview ? <h3>Synopsis</h3> : ""}
       <p>{film.overview}</p>
-      <button className="btn">Ajouter coups de coeur</button>
+      <button className="btn" onClick={() => addStorage()}>
+        Ajouter coups de coeur
+      </button>
     </div>
   );
 };

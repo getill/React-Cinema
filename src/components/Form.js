@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "../components/Card";
 import axios from "axios";
 
@@ -36,7 +36,7 @@ const Form = () => {
               setOrderBy("goodToBad");
             }}
           >
-            Top
+            Top <span>→</span>
           </div>
           <div
             className="btn-sort"
@@ -46,6 +46,7 @@ const Form = () => {
             }}
           >
             Flop
+            <span>→</span>
           </div>
         </div>
       </div>
