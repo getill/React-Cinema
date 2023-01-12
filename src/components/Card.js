@@ -85,6 +85,11 @@ const Films = ({ film }) => {
     }
   };
 
+  const delStorage = () => {
+    let storedData = window.localStorage.film.split(",");
+    let newData = storedData.filter((id) => id != film.id);
+    window.localStorage.film = newData;
+  };
   return (
     <div className="card">
       <img
@@ -100,14 +105,30 @@ const Films = ({ film }) => {
         <h5>Sorti le : {dateFormater(film.release_date)}</h5>
       ) : null}
       <h4>
-        {film.vote_average}/10 <span>🎈</span>
+        {film.vote_average.toFixed(1)}/10 <span>🎈</span>
       </h4>
-      <ul>{film.genre_ids ? genreFinder() : null}</ul>
+      <ul>
+        {film.genre_ids
+          ? genreFinder()
+          : film.genres.map((genre) => <li key={genre}>{genre.name}</li>)}
+      </ul>
       {film.overview ? <h3>Synopsis</h3> : ""}
       <p>{film.overview}</p>
-      <button className="btn" onClick={() => addStorage()}>
-        Ajouter coups de coeur
-      </button>
+      {film.genre_ids ? (
+        <div className="btn" onClick={() => addStorage()}>
+          Ajouter coups de coeur
+        </div>
+      ) : (
+        <div
+          className="btn"
+          onClick={() => {
+            delStorage();
+            window.location.reload();
+          }}
+        >
+          Supprimer de la liste
+        </div>
+      )}
     </div>
   );
 };
