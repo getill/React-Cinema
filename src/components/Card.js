@@ -87,7 +87,9 @@ const Films = ({ film }) => {
 
   const delStorage = () => {
     let storedData = window.localStorage.film.split(",");
+    // Tout les id qui ne sont pas = à film.id, tu les gardes. Film.id étant injecté au click, il le suprimera
     let newData = storedData.filter((id) => id != film.id);
+    // Puis tu met à jour
     window.localStorage.film = newData;
   };
   return (
@@ -123,6 +125,7 @@ const Films = ({ film }) => {
           className="btn"
           onClick={() => {
             delStorage();
+            // Recharge la page
             window.location.reload();
           }}
         >
